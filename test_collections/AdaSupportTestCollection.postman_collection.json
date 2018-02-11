@@ -1,0 +1,447 @@
+{
+	"id": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+	"name": "Ada Support Test Collection",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "GET /converations/:conversation_id Tests",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"order": [
+				"a7c5dbb6-fb80-b289-51a8-6da9f444e7f6",
+				"1ce1366c-3fc0-de4b-a3e5-3833ae8a21eb"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"auth": null,
+			"id": "87afdee0-9ab8-f9b7-9158-0b59ffbc0faa"
+		},
+		{
+			"name": "POST /messages Tests",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"order": [
+				"6d361675-b23e-6804-f357-cd4b9f434392",
+				"a60fe5d2-1882-7eb3-1bf1-61c4779022b4",
+				"eed56c7f-6ce5-a3c7-25ac-675a3c4f2dbc",
+				"7576c245-9a2f-5992-9a12-cdb7ac7a5d3d",
+				"4d274098-3a2d-af8c-f488-55802cf27cc6",
+				"975beff0-0d83-b97b-a7d4-9d7e25e0d69c"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"auth": null,
+			"id": "149d991c-ef91-26eb-204b-18af3cbda08c"
+		}
+	],
+	"folders_order": [
+		"149d991c-ef91-26eb-204b-18af3cbda08c",
+		"87afdee0-9ab8-f9b7-9158-0b59ffbc0faa"
+	],
+	"timestamp": 1518326512344,
+	"owner": 0,
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "1ce1366c-3fc0-de4b-a3e5-3833ae8a21eb",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/conversations",
+			"folder": "87afdee0-9ab8-f9b7-9158-0b59ffbc0faa",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a337c17-0789-4275-9ee1-b152a89f9ef9",
+						"type": "text/javascript",
+						"exec": [
+							"// Assert status code is 4040",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1518385993905,
+			"name": "Test GET Conversation - Missing Id",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "// Assert status code is 4040\npm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "4d274098-3a2d-af8c-f488-55802cf27cc6",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/messages",
+			"folder": "149d991c-ef91-26eb-204b-18af3cbda08c",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f2f0d15-96eb-4976-bb56-57963cecd6d8",
+						"type": "text/javascript",
+						"exec": [
+							"// Assert response status code is 400 when request body has invalid sender",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"// Assert error message content is correct",
+							"pm.test(\"Error message is correct\", function () {",
+							"    pm.response.to.have.body(\"'sender' is required in the request payload.\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1518385807090,
+			"name": "Test POST Message - Missing Sender",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "// Assert response status code is 400 when request body has invalid sender\npm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\n// Assert error message content is correct\npm.test(\"Error message is correct\", function () {\n    pm.response.to.have.body(\"'sender' is required in the request payload.\");\n});\n",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n    \"conversation_id\": 1,\n    \"message\": \"hihi\"\n}"
+		},
+		{
+			"id": "6d361675-b23e-6804-f357-cd4b9f434392",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/messages",
+			"folder": "149d991c-ef91-26eb-204b-18af3cbda08c",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3c0ff405-1b6b-4e59-bb79-9e5f5a4a175d",
+						"type": "text/javascript",
+						"exec": [
+							"// Assert response status code is 201",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1518385437914,
+			"name": "Test POST Message - Valid Message",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "// Assert response status code is 201\npm.test(\"Status code is 201\", function () {\n    pm.response.to.have.status(201);\n});\n",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n    \"sender\": \"candice\",\n    \"conversation_id\": 1,\n    \"message\": \"hihi\"\n}"
+		},
+		{
+			"id": "7576c245-9a2f-5992-9a12-cdb7ac7a5d3d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/messages",
+			"folder": "149d991c-ef91-26eb-204b-18af3cbda08c",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5b8c50e-9752-48f0-b955-094a27d166cf",
+						"type": "text/javascript",
+						"exec": [
+							"// Assert response status code is 400 when request body has invalid sender",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"// Assert error message content is correct",
+							"pm.test(\"Error message is correct\", function () {",
+							"    pm.response.to.have.body(\"'conversation_id' is required in the request payload.\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1518385888719,
+			"name": "Test POST Message - Missing Conversation ID",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "// Assert response status code is 400 when request body has invalid sender\npm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\n// Assert error message content is correct\npm.test(\"Error message is correct\", function () {\n    pm.response.to.have.body(\"'conversation_id' is required in the request payload.\");\n});\n",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\"sender\": \"candice\",\n    \"message\": \"hihi\"\n}"
+		},
+		{
+			"id": "975beff0-0d83-b97b-a7d4-9d7e25e0d69c",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/messages",
+			"folder": "149d991c-ef91-26eb-204b-18af3cbda08c",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "346efb59-a666-423a-ac78-37ab4e022a46",
+						"type": "text/javascript",
+						"exec": [
+							"// Assert response status code is 400 when request body has invalid sender",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"// Assert error message content is correct",
+							"pm.test(\"Error message is correct\", function () {",
+							"    pm.response.to.have.body(\"'message' cannot be empty.\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1518385909174,
+			"name": "Test POST Message - Missing Message",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "// Assert response status code is 400 when request body has invalid sender\npm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\n// Assert error message content is correct\npm.test(\"Error message is correct\", function () {\n    pm.response.to.have.body(\"'message' cannot be empty.\");\n});\n",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n    \"sender\": \"candice\",\n    \"conversation_id\": 1\n}"
+		},
+		{
+			"id": "a60fe5d2-1882-7eb3-1bf1-61c4779022b4",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/messages",
+			"folder": "149d991c-ef91-26eb-204b-18af3cbda08c",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c23d173-7cdf-49d1-9561-91ade948d4c0",
+						"type": "text/javascript",
+						"exec": [
+							"// Assert response status code is 400 when request body has invalid sender",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"// Assert error message content is correct",
+							"pm.test(\"Error message is correct\", function () {",
+							"    pm.response.to.have.body(\"Invalid input type for 'sender'.\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1518385899127,
+			"name": "Test POST Message - Invalid Sender",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "// Assert response status code is 400 when request body has invalid sender\npm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\n// Assert error message content is correct\npm.test(\"Error message is correct\", function () {\n    pm.response.to.have.body(\"Invalid input type for 'sender'.\");\n});\n",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n    \"sender\": 123,\n    \"conversation_id\": 1,\n    \"message\": \"hihi\"\n}"
+		},
+		{
+			"id": "a7c5dbb6-fb80-b289-51a8-6da9f444e7f6",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/conversations/1",
+			"folder": "87afdee0-9ab8-f9b7-9158-0b59ffbc0faa",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d7600253-7602-4e38-bbdc-e2c861ead0bd",
+						"type": "text/javascript",
+						"exec": [
+							"// Assert status code is 200",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Assert conversation id is correct",
+							"pm.test(\"Conversation ID is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql('1');",
+							"});"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1518386181995,
+			"name": "Test GET Conversation - Valid Id",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "// Assert status code is 200\npm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\n// Assert conversation id is correct\npm.test(\"Conversation ID is correct\", function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData.id).to.eql('1');\n});",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "eed56c7f-6ce5-a3c7-25ac-675a3c4f2dbc",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/messages",
+			"folder": "149d991c-ef91-26eb-204b-18af3cbda08c",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e1dbba80-0d15-4833-bc41-36a56283f9d6",
+						"type": "text/javascript",
+						"exec": [
+							"// Assert response status code is 400 when request body has invalid sender",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"// Assert error message content is correct",
+							"pm.test(\"Error message is correct\", function () {",
+							"    pm.response.to.have.body(\"Invalid input type for 'message'.\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1518385902023,
+			"name": "Test POST Message - Invalid Message",
+			"description": "",
+			"collectionId": "1779bd08-6bb6-629c-3bef-b202162e71ae",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "// Assert response status code is 400 when request body has invalid sender\npm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\n// Assert error message content is correct\npm.test(\"Error message is correct\", function () {\n    pm.response.to.have.body(\"Invalid input type for 'message'.\");\n});\n",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n    \"sender\": \"candice\",\n    \"conversation_id\": 1,\n    \"message\": 123\n}"
+		}
+	]
+}
